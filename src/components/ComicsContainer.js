@@ -1,10 +1,12 @@
 import Comic from "./Comic"
 
-function ComicsContainer() {
+function ComicsContainer({comics, deleteButton}) {
 
   return (
     <>
-      <Comic />
+    {comics.map(comic => {
+      return <Comic comic={comic} key={comic.id} deleteButton={deleteButton} />
+    })}
     </>
   )
 

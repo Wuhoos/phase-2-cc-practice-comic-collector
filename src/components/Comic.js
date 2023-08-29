@@ -1,15 +1,21 @@
-function Comic() {
+import { useState } from "react"
+
+
+function Comic({comic, deleteButton}) {
+
+  const [picture, setPictureOff] = useState(true)
 
   return (
-    <div className="comic-item">
-
-      {/* The image should render if the details aren't displayed */}
-      <img src={"#"} alt={"Comic Issue Image"} />
-
-      {/* The details should render if the image isn't displayed */}
-      <h3>{"Title"}</h3>
-      <h4>{"Issue No."}</h4>
-      <button>Remove</button>
+    <div className="comic-item" onClick={() => setPictureOff(!picture)} >
+      
+      {picture ? <img src={comic.image_url} alt={"Comic Issue Image"}/> :
+      
+      <div>
+        <h3>{comic.title}</h3>
+        <h4>{comic.issue}</h4>
+        <button onClick={() => deleteButton(comic.id)} >Remove</button>
+      </div>
+      }
 
     </div>
   )
